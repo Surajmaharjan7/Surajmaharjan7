@@ -1,403 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Suraj Maharjan — Interior Designer</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
-
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suraj Maharjan</title>
+<style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
     }
-
+    html, body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+        font-family: Arial, Helvetica, sans-serif;
+    }
     body {
-      min-height: 100vh;
-      font-family: "DM Sans", sans-serif;
-      background:
-        radial-gradient(circle at 15% 20%, rgba(255,255,255,.08), transparent 25%),
-        radial-gradient(circle at 85% 80%, rgba(255,255,255,.06), transparent 30%),
-        #0b0b0b;
-      color: #f4f1eb;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 30px;
-      overflow-x: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        transition: background 0.08s ease;
     }
-
-    .card {
-      position: relative;
-      width: 100%;
-      max-width: 1050px;
-      min-height: 620px;
-      border: 1px solid rgba(255,255,255,.13);
-      border-radius: 32px;
-      overflow: hidden;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.09),
-          rgba(255,255,255,.025)
-        );
-
-      backdrop-filter: blur(25px);
-      box-shadow:
-        0 40px 100px rgba(0,0,0,.65),
-        inset 0 1px 0 rgba(255,255,255,.08);
-
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-    }
-
-    /* Decorative architecture lines */
-
-    .line {
-      position: absolute;
-      border: 1px solid rgba(255,255,255,.08);
-      pointer-events: none;
-    }
-
-    .line.one {
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      right: -250px;
-      top: -250px;
-    }
-
-    .line.two {
-      width: 350px;
-      height: 350px;
-      border-radius: 50%;
-      left: -220px;
-      bottom: -200px;
-    }
-
-    .vertical {
-      position: absolute;
-      width: 1px;
-      height: 100%;
-      left: 58%;
-      background: rgba(255,255,255,.06);
-    }
-
-    /* LEFT */
-
-    .content {
-      padding: 70px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      z-index: 2;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      letter-spacing: 4px;
-      font-size: 12px;
-      color: #aaa49b;
-      text-transform: uppercase;
-    }
-
-    .brand-mark {
-      width: 38px;
-      height: 38px;
-      border: 1px solid rgba(255,255,255,.35);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: "Playfair Display", serif;
-      font-size: 16px;
-      letter-spacing: 0;
-    }
-
-    .hero h1 {
-      font-family: "Playfair Display", serif;
-      font-weight: 500;
-      font-size: clamp(55px, 7vw, 92px);
-      line-height: .92;
-      letter-spacing: -4px;
-    }
-
-    .hero h1 span {
-      display: block;
-      font-style: italic;
-      color: #aaa49b;
-    }
-
-    .role {
-      margin-top: 28px;
-      font-size: 13px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: #aaa49b;
-    }
-
-    .description {
-      max-width: 420px;
-      margin-top: 20px;
-      color: #8f8b84;
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    .footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 20px;
-    }
-
-    .contact-label {
-      color: #77736d;
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .contact {
-      color: #e8e4dd;
-      text-decoration: none;
-      font-size: 14px;
-      transition: .3s;
-    }
-
-    .contact:hover {
-      color: white;
-      letter-spacing: .5px;
-    }
-
-    /* RIGHT */
-
-    .side {
-      padding: 70px 50px;
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .number {
-      font-size: 11px;
-      color: #77736d;
-      letter-spacing: 3px;
-      margin-bottom: 45px;
-    }
-
-    .company {
-      font-family: "Playfair Display", serif;
-      font-size: 46px;
-      font-style: italic;
-      margin-bottom: 8px;
-    }
-
-    .company-sub {
-      color: #85817a;
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 60px;
-    }
-
-    .info {
-      border-top: 1px solid rgba(255,255,255,.1);
-    }
-
-    .info-item {
-      padding: 18px 0;
-      border-bottom: 1px solid rgba(255,255,255,.1);
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
-
-    .info-item small {
-      color: #6e6a64;
-      font-size: 9px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .info-item a {
-      color: #dedad2;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    .info-item a:hover {
-      color: white;
-    }
-
-    .location {
-      margin-top: 35px;
-      font-size: 11px;
-      color: #68645f;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 750px) {
-
-      body {
-        padding: 15px;
-      }
-
-      .card {
-        grid-template-columns: 1fr;
-        min-height: auto;
-        border-radius: 25px;
-      }
-
-      .vertical {
-        display: none;
-      }
-
-      .content {
-        padding: 45px 30px;
-        min-height: 520px;
-      }
-
-      .side {
-        padding: 45px 30px;
-      }
-
-      .hero h1 {
-        font-size: 62px;
-        letter-spacing: -3px;
-      }
-
-      .footer {
+    .screen {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
         flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .company {
-        font-size: 40px;
-      }
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition:
+            background 0.08s ease,
+            color 0.08s ease,
+            filter 0.08s ease;
     }
-  </style>
+    .loading {
+        font-size: clamp(28px, 7vw, 80px);
+        font-weight: 900;
+        letter-spacing: 0.15em;
+        animation:
+            pulse 0.35s infinite alternate,
+            glitch 0.7s infinite;
+    }
+    .dots {
+        display: inline-block;
+        width: 3ch;
+        text-align: left;
+    }
+    .number {
+        margin-top: 30px;
+        font-size: clamp(35px, 9vw, 110px);
+        font-weight: 900;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.04em;
+        text-shadow:
+            0 0 10px currentColor,
+            0 0 30px currentColor;
+        transition: transform 0.05s;
+    }
+    .rate {
+        margin-top: 12px;
+        font-size: 13px;
+        letter-spacing: 0.25em;
+        opacity: 0.55;
+        text-transform: uppercase;
+    }
+    .progress {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: currentColor;
+        transform-origin: left;
+        animation: progress 1s linear infinite;
+    }
+    /* Subtle visual pulse rather than dangerous hard strobing */
+    @keyframes pulse {
+        from {
+            transform: scale(1);
+            opacity: 0.65;
+        }
+        to {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+    }
+    @keyframes glitch {
+        0%, 90%, 100% {
+            filter: none;
+        }
+        92% {
+            filter: blur(1px);
+            transform: translateX(-3px);
+        }
+        94% {
+            filter: contrast(2);
+            transform: translateX(3px);
+        }
+        96% {
+            filter: none;
+            transform: translateX(0);
+        }
+    }
+    @keyframes progress {
+        from {
+            transform: scaleX(0);
+        }
+        to {
+            transform: scaleX(1);
+        }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 4s !important;
+            animation-iteration-count: infinite !important;
+        }
+    }
+</style>
 </head>
-
 <body>
-
-  <main class="card">
-
-    <div class="line one"></div>
-    <div class="line two"></div>
-    <div class="vertical"></div>
-
-    <!-- LEFT -->
-    <section class="content">
-
-      <div class="brand">
-        <div class="brand-mark">SM</div>
-        SURaj Maharjan
-      </div>
-
-      <div class="hero">
-        <h1>
-          Suraj
-          <span>Maharjan</span>
-        </h1>
-
-        <div class="role">
-          Interior Designer
-        </div>
-
-        <p class="description">
-          Creating refined spaces through architecture,
-          aesthetics and thoughtful interior design.
-        </p>
-      </div>
-
-      <div class="footer">
-
-        <div>
-          <div class="contact-label">Personal</div>
-          <a class="contact" href="tel:+9779851326265">
-            +977 9851326265
-          </a>
-        </div>
-
-        <div>
-          <div class="contact-label">Email</div>
-          <a class="contact" href="mailto:ji.surajmaharjan@gmail.com">
-            ji.surajmaharjan@gmail.com
-          </a>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- RIGHT -->
-    <section class="side">
-
-      <div class="number">
-        01 / 01
-      </div>
-
-      <div class="company">
-        VESUN Interior
-      </div>
-
-      <div class="company-sub">
-        Founder · Interior Design
-      </div>
-
-      <div class="info">
-
-        <div class="info-item">
-          <small>Founder</small>
-          <div>Suraj Maharjan</div>
-        </div>
-
-        <div class="info-item">
-          <small>Business Contact</small>
-          <a href="tel:+9779851412977">
-            +977 9851412977
-          </a>
-        </div>
-
-        <div class="info-item">
-          <small>Personal Contact</small>
-          <a href="tel:+9779851326265">
-            +977 9851326265
-          </a>
-        </div>
-
-        <div class="info-item">
-          <small>Email</small>
-          <a href="mailto:ji.surajmaharjan@gmail.com">
-            ji.surajmaharjan@gmail.com
-          </a>
-        </div>
-
-      </div>
-
-      <div class="location">
-        VESUN Interior · Kathmandu, Nepal
-      </div>
-
-    </section>
-
-  </main>
-
+<div class="screen" id="screen">
+    <div class="loading">
+        SOON LOADING WAIT xD<span class="dots" id="dots">.</span>
+    </div>
+    <div class="number" id="number">
+        0
+    </div>
+    <div class="rate" id="rate">
+        1,000 / SECOND
+    </div>
+</div>
+<div class="progress"></div>
+<script>
+const screen = document.getElementById("screen");
+const numberElement = document.getElementById("number");
+const dots = document.getElementById("dots");
+const rateElement = document.getElementById("rate");
+let number = 0;
+// Starts at 1,000 numbers/sec
+let rate = 1000;
+// Rate increases continuously
+let acceleration = 1.015;
+// Timing
+let lastTime = performance.now();
+// ----------------------------------------------------
+// INFINITE COUNTER
+// ----------------------------------------------------
+function counterLoop(time) {
+    const delta = (time - lastTime) / 1000;
+    lastTime = time;
+    // Increase the counter according to current speed
+    number += rate * delta;
+    numberElement.textContent =
+        Math.floor(number).toLocaleString();
+    // Speed increases with time
+    rate *= Math.pow(acceleration, delta * 60);
+    rateElement.textContent =
+        Math.floor(rate).toLocaleString() + " / SECOND";
+    // Tiny distortion as the speed gets higher
+    const intensity =
+        Math.min(1.08, 1 + Math.log10(rate) * 0.005);
+    numberElement.style.transform =
+        `scale(${intensity})`;
+    requestAnimationFrame(counterLoop);
+}
+requestAnimationFrame(counterLoop);
+// ----------------------------------------------------
+// LOADING DOTS
+// ----------------------------------------------------
+let dotCount = 0;
+setInterval(() => {
+    dotCount++;
+    if (dotCount > 3) {
+        dotCount = 0;
+    }
+    dots.textContent = ".".repeat(dotCount);
+}, 250);
+// ----------------------------------------------------
+// RAPID BLACK / WHITE VISUAL PULSES
+// ----------------------------------------------------
+let phase = 0;
+function visualPulse() {
+    phase++;
+    /*
+       Alternates between dark and light using
+       short fades instead of an extreme hard strobe.
+    */
+    const wave = (Math.sin(phase * 0.9) + 1) / 2;
+    const brightness =
+        Math.round(wave * 255);
+    screen.style.background =
+        `rgb(${brightness}, ${brightness}, ${brightness})`;
+    screen.style.color =
+        brightness > 130 ? "#000" : "#fff";
+    requestAnimationFrame(visualPulse);
+}
+visualPulse();
+// ----------------------------------------------------
+// RANDOM GLITCH MOMENTS
+// ----------------------------------------------------
+setInterval(() => {
+    const x = (Math.random() - 0.5) * 8;
+    const y = (Math.random() - 0.5) * 5;
+    screen.style.transform =
+        `translate(${x}px, ${y}px)`;
+    setTimeout(() => {
+        screen.style.transform = "translate(0,0)";
+    }, 50);
+}, 700);
+</script>
 </body>
 </html>
