@@ -1,111 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Answer This? ❤️</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Infinite Bouncing Balls</title>
+
   <style>
     * {
       box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
     }
-    body {
+
+    html, body {
       margin: 0;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #ffd6e7, #fff5f8);
+      background: #000;
+      touch-action: none;
+    }
+
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .counter {
+      position: fixed;
+      top: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
       font-family: Arial, sans-serif;
-    }
-    .container {
-      width: 90%;
-      max-width: 400px;
-      text-align: center;
-      background: white;
-      padding: 35px 20px;
-      border-radius: 25px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-    }
-    h1 {
-      color: #ff3366;
-      font-size: 30px;
-      margin-bottom: 30px;
-    }
-    .buttons {
-      position: relative;
-      height: 80px;
-    }
-    button {
-      position: absolute;
-      top: 10px;
-      width: 120px;
-      height: 55px;
-      border: none;
-      border-radius: 30px;
       font-size: 18px;
-      font-weight: bold;
-      touch-action: manipulation;
-    }
-    #yes {
-      left: 10%;
-      background: #ff3366;
-      color: white;
-    }
-    #no {
-      left: 55%;
-      background: #777;
-      color: white;
-      transition: left 0.15s ease, top 0.15s ease;
-    }
-    #message {
-      min-height: 30px;
-      margin-top: 20px;
-      font-size: 21px;
-      font-weight: bold;
-      color: #ff3366;
+      z-index: 10;
+      background: rgba(255,255,255,0.1);
+      padding: 8px 15px;
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
     }
   </style>
 </head>
+
 <body>
-  <div class="container">
-    <h1>Are you stupid ? ❤️</h1>
-    <div class="buttons">
-      <button id="yes">Yes 💖</button>
-      <button id="no">No 😢</button>
-    </div>
-    <div id="message"></div>
+
+  <div class="counter">
+    Balls: <span id="count">1</span>
   </div>
+
+  <canvas id="canvas"></canvas>
+
   <script>
-    const noButton = document.getElementById("no");
-    const yesButton = document.getElementById("yes");
-    const message = document.getElementById("message");
-    // YES always works ❤️
-    yesButton.addEventListener("click", () => {
-      message.innerHTML = "YES! ❤️ I knew you are 😍";
-    });
-    // NO runs away EVERY SINGLE TIME 😈
-    function runAway(event) {
-      if (event) event.preventDefault();
-      const buttonWidth = noButton.offsetWidth;
-      const buttonHeight = noButton.offsetHeight;
-      const maxX = window.innerWidth - buttonWidth - 10;
-      const maxY = window.innerHeight - buttonHeight - 10;
-      const randomX = Math.max(10, Math.random() * maxX);
-      const randomY = Math.max(10, Math.random() * maxY);
-      // Change to fixed so it can run anywhere on the screen
-      noButton.style.position = "fixed";
-      noButton.style.left = randomX + "px";
-      noButton.style.top = randomY + "px";
-      message.innerHTML = "Nice try 😏 ❤️";
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const countText = document.getElementById("count");
+
+    let balls = [];
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     }
-    // Works every time on phone
-    noButton.addEventListener("click", runAway);
-    // Also works if they tap quickly
-    noButton.addEventListener("touchstart", runAway, {
-      passive: false
-    });
+
+    window.addEventListener("resize", resize);
+    resize();
+
+
+    // Create a ball
+    function createBall(x, y, vx, vy, radius = 8) {
+
+      return {
+        x: x,
+        y: y,
+        vx: vx,
+        vy: vy,
+        radius: radius,
+
+        color: `hsl(${Math.random() * 360}, 100%, 60%)`
+      };
+    }
+
+
+    // First ball
+    balls.push(
+      createBall(
+        canvas.width / 2,
+        canvas.height / 2,
+        3,
+        3
+      )
+    );
+
+
+    function addBall(ball, side) {
+
+      // New random direction
+      let speed = 2 + Math.random() * 3;
+
+      let angle = Math.random() * Math.PI * 2;
+
+      let newBall = createBall(
+        ball.x,
+        ball.y,
+        Math.cos(angle) * speed,
+        Math.sin(angle) * speed,
+        6 + Math.random() * 5
+      );
+
+      balls.push(newBall);
+    }
+
+
+    function update() {
+
+      for (let ball of balls) {
+
+        ball.x += ball.vx;
+        ball.y += ball.vy;
+
+        let hit = false;
+        let side = "";
+
+
+        // Left wall
+        if (ball.x - ball.radius <= 0) {
+
+          ball.x = ball.radius;
+          ball.vx *= -1;
+
+          hit = true;
+          side = "left";
+        }
+
+
+        // Right wall
+        if (ball.x + ball.radius >= canvas.width) {
+
+          ball.x = canvas.width - ball.radius;
+          ball.vx *= -1;
+
+          hit = true;
+          side = "right";
+        }
+
+
+        // Top wall
+        if (ball.y - ball.radius <= 0) {
+
+          ball.y = ball.radius;
+          ball.vy *= -1;
+
+          hit = true;
+          side = "top";
+        }
+
+
+        // Bottom wall
+        if (ball.y + ball.radius >= canvas.height) {
+
+          ball.y = canvas.height - ball.radius;
+          ball.vy *= -1;
+
+          hit = true;
+          side = "bottom";
+        }
+
+
+        // Duplicate when hitting wall
+        if (hit) {
+
+          // Prevent every frame from creating balls
+          if (!ball.cooldown) {
+
+            addBall(ball, side);
+
+            ball.cooldown = true;
+
+            setTimeout(() => {
+              ball.cooldown = false;
+            }, 100);
+          }
+        }
+      }
+
+
+      countText.textContent = balls.length;
+    }
+
+
+    function draw() {
+
+      ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+
+      for (let ball of balls) {
+
+        // Glow
+        ctx.beginPath();
+
+        ctx.arc(
+          ball.x,
+          ball.y,
+          ball.radius + 8,
+          0,
+          Math.PI * 2
+        );
+
+        ctx.fillStyle = ball.color;
+        ctx.globalAlpha = 0.15;
+        ctx.fill();
+
+
+        // Ball
+        ctx.beginPath();
+
+        ctx.arc(
+          ball.x,
+          ball.y,
+          ball.radius,
+          0,
+          Math.PI * 2
+        );
+
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = ball.color;
+        ctx.fill();
+      }
+
+      ctx.globalAlpha = 1;
+    }
+
+
+    function animate() {
+
+      update();
+      draw();
+
+      requestAnimationFrame(animate);
+    }
+
+
+    animate();
+
   </script>
+
 </body>
 </html>
