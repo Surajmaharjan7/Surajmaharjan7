@@ -5,560 +5,1099 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <title>Suraj ko website xD</title>
-<section id="about-vesun-interior" class="about-section">
 
-  <div class="intro-container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<title>Vesun Interior | Suraj Maharjan</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#0f0f0f;
+    color:#ffffff;
+    overflow-x:hidden;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(15,15,15,.75);
+    backdrop-filter:blur(15px);
+    z-index:1000;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:#d4a373;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#d4a373;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:120px 8% 80px;
+    position:relative;
+    overflow:hidden;
+    background:
+    radial-gradient(circle at 20% 30%, #3d2c1e 0%, transparent 30%),
+    radial-gradient(circle at 80% 70%, #2d2118 0%, transparent 35%),
+    #0f0f0f;
+}
+
+.hero-content{
+    max-width:800px;
+    z-index:2;
+}
+
+.hero h1{
+    font-size:clamp(55px,10vw,130px);
+    line-height:.9;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:#d4a373;
+    font-style:italic;
+}
+
+.hero p{
+    font-size:19px;
+    line-height:1.8;
+    color:#cfcfcf;
+    max-width:650px;
+}
+
+.hero-buttons{
+    margin-top:35px;
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:15px 28px;
+    border-radius:50px;
+    text-decoration:none;
+    display:inline-block;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:#d4a373;
+    color:#111;
+    font-weight:bold;
+}
+
+.btn-primary:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 40px rgba(212,163,115,.3);
+}
+
+.btn-outline{
+    border:1px solid #777;
+    color:white;
+}
+
+.btn-outline:hover{
+    background:white;
+    color:black;
+}
+
+/* Decorative circles */
+
+.circle{
+    position:absolute;
+    border-radius:50%;
+    border:1px solid rgba(212,163,115,.3);
+    animation:float 8s infinite ease-in-out;
+}
+
+.circle.one{
+    width:400px;
+    height:400px;
+    right:-100px;
+    top:100px;
+}
+
+.circle.two{
+    width:250px;
+    height:250px;
+    right:200px;
+    bottom:-100px;
+    animation-delay:2s;
+}
+
+@keyframes float{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-30px);
+    }
+
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section{
+    padding:110px 8%;
+}
+
+.section-title{
+    font-size:clamp(40px,6vw,75px);
+    margin-bottom:20px;
+}
+
+.section-title span{
+    color:#d4a373;
+}
+
+.section-description{
+    max-width:700px;
+    color:#aaa;
+    font-size:17px;
+    line-height:1.8;
+    margin-bottom:60px;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.about-card{
+    padding:45px;
+    border-radius:25px;
+    background:linear-gradient(
+        135deg,
+        rgba(255,255,255,.08),
+        rgba(255,255,255,.02)
+    );
+    border:1px solid rgba(255,255,255,.1);
+    backdrop-filter:blur(10px);
+}
+
+.about-card h3{
+    color:#d4a373;
+    margin-bottom:20px;
+    font-size:25px;
+}
+
+.about-card p{
+    color:#bbb;
+    line-height:1.9;
+}
+
+/* =========================
+   QUOTE
+========================= */
+
+.quote-box{
+    margin:60px auto;
+    max-width:1000px;
+    padding:70px 40px;
+    text-align:center;
+    border-radius:30px;
+    background:linear-gradient(
+        135deg,
+        #d4a373,
+        #8f6846
+    );
+    color:#111;
+}
+
+.quote-box h2{
+    font-size:clamp(28px,5vw,55px);
+    line-height:1.3;
+}
+
+.quote-box p{
+    margin-top:20px;
+    font-size:17px;
+}
+
+/* =========================
+   SERVICES
+========================= */
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.service-card{
+    min-height:300px;
+    padding:35px;
+    border-radius:25px;
+    background:#181818;
+    border:1px solid #282828;
+    transition:.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+.service-card::before{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    background:#d4a373;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:0;
+    transition:.4s;
+    top:-60px;
+    right:-60px;
+}
+
+.service-card:hover{
+    transform:translateY(-12px);
+    border-color:#d4a373;
+}
+
+.service-card:hover::before{
+    opacity:.25;
+}
+
+.service-icon{
+    font-size:40px;
+    margin-bottom:25px;
+}
+
+.service-card h3{
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+.service-card p{
+    color:#aaa;
+    line-height:1.7;
+}
+
+/* =========================
+   SPACE PLANNING
+========================= */
+
+.space-section{
+    background:#151515;
+}
+
+.planning-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.planning-item{
+    padding:30px;
+    border-left:2px solid #d4a373;
+    background:#1d1d1d;
+    transition:.3s;
+}
+
+.planning-item:hover{
+    transform:translateX(10px);
+}
+
+.planning-number{
+    font-size:45px;
+    color:#d4a373;
+    opacity:.7;
+    margin-bottom:15px;
+}
+
+.planning-item h3{
+    margin-bottom:12px;
+}
+
+.planning-item p{
+    color:#aaa;
+    line-height:1.6;
+}
+
+/* =========================
+   PROCESS
+========================= */
+
+.timeline{
+    max-width:900px;
+    margin:auto;
+}
+
+.timeline-item{
+    display:flex;
+    gap:30px;
+    padding:35px 0;
+    border-bottom:1px solid #333;
+}
+
+.timeline-number{
+    min-width:70px;
+    height:70px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#d4a373;
+    color:#111;
+    font-weight:bold;
+    font-size:20px;
+}
+
+.timeline-content h3{
+    font-size:25px;
+    margin-bottom:10px;
+}
+
+.timeline-content p{
+    color:#aaa;
+    line-height:1.7;
+}
+
+/* =========================
+   DESIGN QUOTES
+========================= */
+
+.quotes-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.quote-card{
+    padding:35px;
+    border-radius:20px;
+    background:#1b1b1b;
+    border:1px solid #292929;
+    font-size:20px;
+    line-height:1.6;
+    transition:.4s;
+}
+
+.quote-card:hover{
+    background:#d4a373;
+    color:#111;
+    transform:rotate(-2deg) scale(1.03);
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-section{
+    text-align:center;
+    background:
+    radial-gradient(circle at center, #382718, #111 65%);
+}
+
+.contact-section h2{
+    font-size:clamp(45px,7vw,90px);
+}
+
+.contact-section p{
+    color:#bbb;
+    margin:25px auto;
+    max-width:700px;
+    line-height:1.8;
+}
+
+.phone{
+    display:inline-block;
+    font-size:25px;
+    color:#d4a373;
+    text-decoration:none;
+    margin-top:25px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:40px 8%;
+    background:#090909;
+    text-align:center;
+    color:#777;
+}
+
+footer strong{
+    color:#d4a373;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+    nav{
+        padding:18px 5%;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    section{
+        padding:80px 6%;
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+    }
+
+    .timeline-item{
+        gap:15px;
+    }
+
+    .timeline-number{
+        min-width:55px;
+        height:55px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
 
 ```
-<div class="intro-header">
-  <p class="eyebrow">WELCOME TO VESUN INTERIOR</p>
-
-  <h1>
-    Transforming Spaces Into Beautiful Experiences
-  </h1>
-
-  <h2>
-    Hi, I'm <strong>Suraj Maharjan</strong> — Founder of Vesun Interior
-  </h2>
-
-  <p>
-    I am an interior designer with a passion for creating meaningful,
-    functional, comfortable, and visually beautiful spaces. As the founder
-    of <strong>Vesun Interior</strong>, my goal is to transform ordinary
-    spaces into interiors that reflect personality, lifestyle, comfort,
-    creativity, and purpose.
-  </p>
-
-  <p>
-    Every room has a story waiting to be told. Every wall, corner, light,
-    texture, material, and piece of furniture can work together to create
-    an experience. At Vesun Interior, we believe that great interior design
-    is not only about making a space look beautiful — it is about making
-    life inside that space better.
-  </p>
-
-  <a href="tel:+9779851326265" class="contact-button">
-    Contact Suraj Maharjan
-  </a>
-
-  <p class="phone-number">
-    Phone: <strong>+977-9851326265</strong>
-  </p>
+<div class="logo">
+    VESUN <span>INTERIOR</span>
 </div>
 
-
-<div class="designer-story">
-
-  <h2>About the Designer</h2>
-
-  <p>
-    My name is <strong>Suraj Maharjan</strong>, and I am the founder of
-    <strong>Vesun Interior</strong>. I work as an interior designer with a
-    strong passion for creativity, space planning, design details, modern
-    interiors, functional layouts, and beautiful living environments.
-  </p>
-
-  <p>
-    I believe that interior design should create a balance between beauty
-    and function. A beautiful room is important, but a successful interior
-    must also feel comfortable, practical, organized, and suitable for the
-    people who use it every day.
-  </p>
-
-  <p>
-    My approach to design begins with understanding the client. Every
-    client has different needs, habits, dreams, preferences, lifestyles,
-    budgets, and expectations. Because of this, every design should have
-    its own personality.
-  </p>
-
-  <blockquote>
-    “A well-designed space does not simply look beautiful.
-    It makes everyday life feel better.”
-  </blockquote>
-
-</div>
-
-
-<div class="design-philosophy">
-
-  <h2>Our Design Philosophy</h2>
-
-  <p>
-    At Vesun Interior, we believe that every space should have a purpose.
-    Good interior design connects people with their surroundings through
-    thoughtful planning, quality materials, natural flow, comfort, and
-    visual harmony.
-  </p>
-
-  <p>
-    We focus on creating interiors that are timeless rather than temporary.
-    Trends may change, but comfort, functionality, quality, and thoughtful
-    design will always remain important.
-  </p>
-
-  <blockquote>
-    “Design is not just what you see.
-    Design is how a space makes you feel.”
-  </blockquote>
-
-  <blockquote>
-    “Your space should tell your story before you say a single word.”
-  </blockquote>
-
-  <blockquote>
-    “Great interiors begin with understanding people,
-    not simply choosing furniture.”
-  </blockquote>
-
-</div>
-
-
-<div class="services-section">
-
-  <h2>Our Interior Design Services</h2>
-
-  <p>
-    Vesun Interior provides creative and professional interior design
-    solutions for a wide range of residential and commercial spaces.
-  </p>
-
-  <ul>
-
-    <li>
-      <strong>Space Planning</strong>
-      <p>
-        We carefully study the available area and create layouts that make
-        the best possible use of every square foot.
-      </p>
-    </li>
-
-    <li>
-      <strong>Interior Concept Design</strong>
-      <p>
-        We develop a complete design direction including style, mood,
-        colors, materials, furniture, lighting, and visual identity.
-      </p>
-    </li>
-
-    <li>
-      <strong>Residential Interior Design</strong>
-      <p>
-        Beautiful and comfortable homes designed for modern living.
-      </p>
-    </li>
-
-    <li>
-      <strong>Living Room Design</strong>
-      <p>
-        Creating welcoming spaces for relaxing, entertaining, and spending
-        quality time with family and friends.
-      </p>
-    </li>
-
-    <li>
-      <strong>Bedroom Interior Design</strong>
-      <p>
-        Designing peaceful, comfortable, private, and personalized
-        bedrooms.
-      </p>
-    </li>
-
-    <li>
-      <strong>Kitchen Design</strong>
-      <p>
-        Functional kitchens designed with smart storage, efficient
-        movement, beautiful finishes, and practical planning.
-      </p>
-    </li>
-
-    <li>
-      <strong>Dining Space Design</strong>
-      <p>
-        Creating comfortable and attractive dining environments for
-        everyday meals and special moments.
-      </p>
-    </li>
-
-    <li>
-      <strong>Bathroom Design</strong>
-      <p>
-        Modern, clean, functional, and relaxing bathroom interiors.
-      </p>
-    </li>
-
-    <li>
-      <strong>Office Interior Design</strong>
-      <p>
-        Productive and professional workspaces designed to support focus,
-        collaboration, creativity, and business identity.
-      </p>
-    </li>
-
-    <li>
-      <strong>Commercial Interior Design</strong>
-      <p>
-        Interior solutions for shops, showrooms, restaurants, offices,
-        studios, cafes, and other commercial environments.
-      </p>
-    </li>
-
-    <li>
-      <strong>Furniture Planning</strong>
-      <p>
-        Selecting and arranging furniture to create comfort, balance,
-        functionality, and easy movement.
-      </p>
-    </li>
-
-    <li>
-      <strong>Custom Furniture Design</strong>
-      <p>
-        Designing furniture pieces that fit perfectly with the available
-        space and the overall interior concept.
-      </p>
-    </li>
-
-    <li>
-      <strong>Lighting Design</strong>
-      <p>
-        Using ambient, task, accent, and decorative lighting to create the
-        right mood and improve the experience of every space.
-      </p>
-    </li>
-
-    <li>
-      <strong>Color Consultation</strong>
-      <p>
-        Choosing colors that create harmony, emotion, balance, and a
-        strong visual identity.
-      </p>
-    </li>
-
-    <li>
-      <strong>Material Selection</strong>
-      <p>
-        Helping clients select suitable flooring, wall finishes, fabrics,
-        textures, wood, stone, metal, glass, and decorative materials.
-      </p>
-    </li>
-
-  </ul>
-
-</div>
-
-
-<div class="space-planning-section">
-
-  <h2>Professional Space Planning</h2>
-
-  <p>
-    Space planning is one of the most important foundations of interior
-    design. Before selecting colors, furniture, or decorations, we study
-    how people will move, work, relax, interact, and live inside the
-    space.
-  </p>
-
-  <p>
-    A successful space plan considers circulation, furniture placement,
-    room proportions, storage, accessibility, natural light, artificial
-    lighting, and the relationship between different areas.
-  </p>
-
-  <h3>Our Space Planning Process Includes:</h3>
-
-  <ul>
-    <li>Understanding the client's requirements</li>
-    <li>Measuring the available space</li>
-    <li>Studying the existing layout</li>
-    <li>Analyzing movement and circulation</li>
-    <li>Planning functional zones</li>
-    <li>Determining furniture placement</li>
-    <li>Creating efficient storage solutions</li>
-    <li>Considering natural lighting</li>
-    <li>Planning electrical and lighting positions</li>
-    <li>Improving accessibility and comfort</li>
-    <li>Balancing open and private spaces</li>
-    <li>Making the best use of every available area</li>
-  </ul>
-
-  <blockquote>
-    “Good space planning turns empty square footage
-    into meaningful living.”
-  </blockquote>
-
-  <blockquote>
-    “Every corner has potential when it is designed
-    with purpose.”
-  </blockquote>
-
-</div>
-
-
-<div class="design-process-section">
-
-  <h2>Our Interior Design Process</h2>
-
-  <div class="process-step">
-
-    <h3>01. Consultation</h3>
-
-    <p>
-      We begin by understanding your ideas, requirements, lifestyle,
-      preferences, budget, and expectations.
-    </p>
-
-  </div>
-
-  <div class="process-step">
-
-    <h3>02. Site Analysis</h3>
-
-    <p>
-      We study the space, measurements, structure, natural lighting,
-      circulation, and existing conditions.
-    </p>
-
-  </div>
-
-  <div class="process-step">
-
-    <h3>03. Space Planning</h3>
-
-    <p>
-      We create a functional layout that makes efficient use of the
-      available space.
-    </p>
-
-  </div>
-
-  <div class="process-step">
-
-    <h3>04. Design Concept</h3>
-
-    <p>
-      We develop the visual direction of the project, including style,
-      mood, colors, materials, textures, and design language.
-    </p>
-
-  </div>
-
-  <div class="process-step">
-
-    <h3>05. Furniture & Material Selection</h3>
-
-    <p>
-      We select furniture, finishes, fabrics, lighting, and materials that
-      support the overall design concept.
-    </p>
-
-  </div>
-
-  <div class="process-step">
-
-    <h3>06. Detailed Planning</h3>
-
-    <p>
-      Detailed drawings and planning are prepared to guide the
-      implementation of the design.
-    </p>
-
-  </div>
-
-  <div class="process-step">
-
-    <h3>07. Execution</h3>
-
-    <p>
-      The design begins to become reality through careful coordination,
-      craftsmanship, and attention to detail.
-    </p>
-
-  </div>
-
-  <div class="process-step">
-
-    <h3>08. Final Styling</h3>
-
-    <p>
-      The final details, decorations, accessories, and finishing touches
-      are added to complete the space.
-    </p>
-
-  </div>
-
-</div>
-
-
-<div class="interior-styles">
-
-  <h2>Interior Styles We Explore</h2>
-
-  <ul>
-    <li>Modern Interior Design</li>
-    <li>Minimalist Interior Design</li>
-    <li>Contemporary Interior Design</li>
-    <li>Luxury Interior Design</li>
-    <li>Scandinavian Interior Design</li>
-    <li>Industrial Interior Design</li>
-    <li>Classic Interior Design</li>
-    <li>Modern Classic Interior Design</li>
-    <li>Japandi Style</li>
-    <li>Bohemian Style</li>
-    <li>Natural and Organic Interiors</li>
-    <li>Custom Personalized Interiors</li>
-  </ul>
-
-  <p>
-    We believe that a style should never limit creativity. The best
-    interiors often combine different influences while remaining balanced,
-    functional, and personal.
-  </p>
-
-</div>
-
-
-<div class="why-choose-section">
-
-  <h2>Why Choose Vesun Interior?</h2>
-
-  <p>
-    Choosing an interior designer is about more than selecting someone who
-    can choose beautiful colors or furniture. It is about finding someone
-    who can understand your vision and transform it into a real space.
-  </p>
-
-  <ul>
-    <li>Creative and personalized design ideas</li>
-    <li>Professional space planning</li>
-    <li>Focus on functionality and comfort</li>
-    <li>Attention to small details</li>
-    <li>Balanced and thoughtful design solutions</li>
-    <li>Modern and timeless design concepts</li>
-    <li>Practical approach to every project</li>
-    <li>Client-focused design process</li>
-    <li>Strong focus on visual harmony</li>
-    <li>Passion for transforming spaces</li>
-  </ul>
-
-</div>
-
-
-<div class="quotes-section">
-
-  <h2>Words That Inspire Our Design</h2>
-
-  <blockquote>
-    “A room should never allow the eye to settle in one place.
-    It should smile at you and create fantasy.”
-  </blockquote>
-
-  <blockquote>
-    “Interior design is the art of creating spaces
-    where life feels better.”
-  </blockquote>
-
-  <blockquote>
-    “Your home is not simply where you live.
-    It is where your memories are created.”
-  </blockquote>
-
-  <blockquote>
-    “The smallest details can create the biggest difference.”
-  </blockquote>
-
-  <blockquote>
-    “Luxury is not always about having more.
-    Sometimes, it is about choosing better.”
-  </blockquote>
-
-  <blockquote>
-    “A beautiful space begins with a beautiful idea.”
-  </blockquote>
-
-  <blockquote>
-    “Design with purpose. Create with passion.
-    Live with comfort.”
-  </blockquote>
-
-  <blockquote>
-    “Good design makes a space beautiful.
-    Great design makes it unforgettable.”
-  </blockquote>
-
-  <blockquote>
-    “Every home deserves a space that feels like home.”
-  </blockquote>
-
-</div>
-
-
-<div class="vision-section">
-
-  <h2>Our Vision</h2>
-
-  <p>
-    Our vision is to create interiors that improve everyday life. We want
-    to design spaces where people feel comfortable, inspired, productive,
-    relaxed, and proud.
-  </p>
-
-  <p>
-    We aim to create interiors that combine creativity with practicality,
-    beauty with function, and modern design with personal identity.
-  </p>
-
-  <blockquote>
-    “We do not simply design rooms.
-    We design the way people experience them.”
-  </blockquote>
-
-</div>
-
-
-<div class="contact-section">
-
-  <h2>Let's Create Something Beautiful</h2>
-
-  <p>
-    Whether you are planning a new home, redesigning an existing room,
-    creating a modern office, designing a commercial space, or simply
-    looking for professional interior ideas, Vesun Interior is ready to
-    help you transform your vision into reality.
-  </p>
-
-  <h3>Founder & Interior Designer</h3>
-
-  <p>
-    <strong>Suraj Maharjan</strong>
-  </p>
-
-  <p>
-    Founder of <strong>Vesun Interior</strong>
-  </p>
-
-  <p>
-    Interior Designer
-  </p>
-
-  <p>
-    Contact:
-    <a href="tel:+9779851326265">
-      +977-9851326265
-    </a>
-  </p>
-
-  <blockquote>
-    “Let's turn your space into a place
-    you will love to live, work, and create in.”
-  </blockquote>
-
+<div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#planning">Planning</a>
+    <a href="#process">Process</a>
+    <a href="#contact">Contact</a>
 </div>
 ```
 
-  </div>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+```
+<div class="circle one"></div>
+<div class="circle two"></div>
+
+<div class="hero-content">
+
+    <p style="color:#d4a373;letter-spacing:3px;margin-bottom:20px;">
+        INTERIOR DESIGN • SPACE PLANNING • CREATIVE LIVING
+    </p>
+
+    <h1>
+        We Design
+        <span>Spaces</span>
+        That Inspire Life.
+    </h1>
+
+    <p>
+        Welcome to Vesun Interior. We create beautiful,
+        functional, modern and meaningful spaces designed
+        around your lifestyle, personality and dreams.
+    </p>
+
+    <div class="hero-buttons">
+
+        <a href="#contact" class="btn btn-primary">
+            Start Your Project
+        </a>
+
+        <a href="#about" class="btn btn-outline">
+            Discover Vesun Interior
+        </a>
+
+    </div>
+
+</div>
+```
 
 </section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+```
+<h2 class="section-title">
+    Meet <span>Suraj Maharjan</span>
+</h2>
+
+<p class="section-description">
+    Founder of Vesun Interior and passionate interior designer,
+    creating spaces where beauty and functionality work together.
+</p>
+
+<div class="about-grid">
+
+    <div class="about-card">
+
+        <h3>Who I Am</h3>
+
+        <p>
+            My name is <strong>Suraj Maharjan</strong>.
+            I am the founder of <strong>Vesun Interior</strong>
+            and an interior designer passionate about transforming
+            ordinary spaces into beautiful experiences.
+        </p>
+
+        <br>
+
+        <p>
+            I believe that every space has potential. With thoughtful
+            planning, creative ideas, proper materials, lighting,
+            furniture and details, a simple room can become something
+            truly special.
+        </p>
+
+    </div>
+
+
+    <div class="about-card">
+
+        <h3>My Design Philosophy</h3>
+
+        <p>
+            Interior design should not only look beautiful.
+            It should improve the way people live, work, relax
+            and experience their everyday environment.
+        </p>
+
+        <br>
+
+        <p>
+            Every client is different. Every lifestyle is different.
+            That is why every space should have its own identity.
+        </p>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- BIG QUOTE -->
+
+<div class="quote-box">
+
+```
+<h2>
+    “We Don't Simply Design Rooms.
+    We Design the Way You Experience Life.”
+</h2>
+
+<p>
+    — Vesun Interior
+</p>
+```
+
+</div>
+
+<!-- SERVICES -->
+
+<section id="services">
+
+```
+<h2 class="section-title">
+    What We <span>Create</span>
+</h2>
+
+<p class="section-description">
+    From the first idea to the final detail, we provide creative
+    interior solutions designed for modern living.
+</p>
+
+
+<div class="service-grid">
+
+    <div class="service-card">
+        <div class="service-icon">⌂</div>
+        <h3>Residential Design</h3>
+        <p>
+            Beautiful homes designed for comfort, personality,
+            functionality and everyday living.
+        </p>
+    </div>
+
+
+    <div class="service-card">
+        <div class="service-icon">◫</div>
+        <h3>Space Planning</h3>
+        <p>
+            Smart layouts that improve movement, functionality,
+            comfort and efficient use of space.
+        </p>
+    </div>
+
+
+    <div class="service-card">
+        <div class="service-icon">✦</div>
+        <h3>Modern Interiors</h3>
+        <p>
+            Clean, elegant and contemporary spaces designed
+            for today's lifestyle.
+        </p>
+    </div>
+
+
+    <div class="service-card">
+        <div class="service-icon">☼</div>
+        <h3>Lighting Design</h3>
+        <p>
+            Lighting solutions that create atmosphere, warmth,
+            focus and visual drama.
+        </p>
+    </div>
+
+
+    <div class="service-card">
+        <div class="service-icon">▣</div>
+        <h3>Furniture Planning</h3>
+        <p>
+            Carefully selected and positioned furniture for
+            comfort and visual balance.
+        </p>
+    </div>
+
+
+    <div class="service-card">
+        <div class="service-icon">◆</div>
+        <h3>Material Selection</h3>
+        <p>
+            Thoughtful combinations of wood, stone, metal,
+            fabric, glass and modern finishes.
+        </p>
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- SPACE PLANNING -->
+
+<section class="space-section" id="planning">
+
+```
+<h2 class="section-title">
+    The Art of <span>Space Planning</span>
+</h2>
+
+<p class="section-description">
+    Great interiors begin with great planning. Every square foot
+    should have a purpose.
+</p>
+
+
+<div class="planning-grid">
+
+    <div class="planning-item">
+
+        <div class="planning-number">01</div>
+
+        <h3>Understand</h3>
+
+        <p>
+            Understanding your lifestyle, requirements,
+            dreams and expectations.
+        </p>
+
+    </div>
+
+
+    <div class="planning-item">
+
+        <div class="planning-number">02</div>
+
+        <h3>Analyze</h3>
+
+        <p>
+            Studying the available space, natural light,
+            circulation and opportunities.
+        </p>
+
+    </div>
+
+
+    <div class="planning-item">
+
+        <div class="planning-number">03</div>
+
+        <h3>Plan</h3>
+
+        <p>
+            Creating functional zones and intelligent
+            furniture layouts.
+        </p>
+
+    </div>
+
+
+    <div class="planning-item">
+
+        <div class="planning-number">04</div>
+
+        <h3>Create</h3>
+
+        <p>
+            Transforming the plan into a beautiful,
+            functional and inspiring environment.
+        </p>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- PROCESS -->
+
+<section id="process">
+
+```
+<h2 class="section-title">
+    From <span>Vision</span> to Reality
+</h2>
+
+<div class="timeline">
+
+    <div class="timeline-item">
+
+        <div class="timeline-number">01</div>
+
+        <div class="timeline-content">
+
+            <h3>Consultation</h3>
+
+            <p>
+                We listen to your ideas, understand your needs
+                and discuss your vision.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="timeline-item">
+
+        <div class="timeline-number">02</div>
+
+        <div class="timeline-content">
+
+            <h3>Space Analysis</h3>
+
+            <p>
+                We study the layout, dimensions, lighting
+                and opportunities of your space.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="timeline-item">
+
+        <div class="timeline-number">03</div>
+
+        <div class="timeline-content">
+
+            <h3>Design Concept</h3>
+
+            <p>
+                We create the design direction including
+                colors, materials, mood and visual identity.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="timeline-item">
+
+        <div class="timeline-number">04</div>
+
+        <div class="timeline-content">
+
+            <h3>Detailed Planning</h3>
+
+            <p>
+                Furniture, materials, lighting and every
+                important detail are carefully planned.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="timeline-item">
+
+        <div class="timeline-number">05</div>
+
+        <div class="timeline-content">
+
+            <h3>Final Transformation</h3>
+
+            <p>
+                Your vision becomes a finished space designed
+                for the way you live.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- QUOTES -->
+
+<section>
+
+```
+<h2 class="section-title">
+    Design <span>Inspiration</span>
+</h2>
+
+<div class="quotes-grid">
+
+    <div class="quote-card">
+        “A beautiful space begins with a beautiful idea.”
+    </div>
+
+    <div class="quote-card">
+        “Every corner has potential when designed with purpose.”
+    </div>
+
+    <div class="quote-card">
+        “Good design makes a space beautiful. Great design makes it unforgettable.”
+    </div>
+
+    <div class="quote-card">
+        “Your space should tell your story before you say a word.”
+    </div>
+
+    <div class="quote-card">
+        “Design with purpose. Create with passion. Live with comfort.”
+    </div>
+
+    <div class="quote-card">
+        “Luxury is not about having more. It is about choosing better.”
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact-section" id="contact">
+
+```
+<h2>
+    Let's Create Something
+    <br>
+    <span style="color:#d4a373;">Beautiful Together.</span>
+</h2>
+
+<p>
+    Ready to transform your home, office or commercial space?
+    Let's turn your ideas into a space that feels inspiring,
+    functional and uniquely yours.
+</p>
+
+<p>
+    <strong>Suraj Maharjan</strong><br>
+    Founder & Interior Designer<br>
+    Vesun Interior
+</p>
+
+<a class="phone" href="tel:+9779851326265">
+    +977-9851326265
+</a>
+
+<br><br>
+
+<a href="tel:+9779851326265" class="btn btn-primary">
+    Start Your Interior Journey
+</a>
+```
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+```
+<p>
+    © 2026 <strong>Vesun Interior</strong>
+</p>
+
+<p>
+    Designed with creativity by Suraj Maharjan
+</p>
+```
+
+</footer>
+
+<script>
+
+/* Simple scroll animation */
+
+const cards = document.querySelectorAll(
+    ".service-card, .planning-item, .about-card, .quote-card"
+);
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+
+        }
+
+    });
+
+},{
+    threshold:0.1
+});
+
+
+cards.forEach(card => {
+
+    card.style.opacity = "0";
+    card.style.transform = "translateY(40px)";
+    card.style.transition = "all .7s ease";
+
+    observer.observe(card);
+
+});
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
 <style>
 
