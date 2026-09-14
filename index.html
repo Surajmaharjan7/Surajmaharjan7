@@ -4,9 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Site Photos</title>
+<title>Mero Photo haru</title>
 
 <style>
+
+
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -17,19 +20,30 @@ html,
 body {
     width: 100%;
     min-height: 100%;
+
     background: #000;
-    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 }
+
 
 
 .loading-screen {
     position: fixed;
+
     inset: 0;
+
     width: 100vw;
     height: 100vh;
 
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
     align-items: center;
 
@@ -39,6 +53,7 @@ body {
     color: #fff;
 
     overflow: hidden;
+
     z-index: 9999;
 
     transition:
@@ -48,35 +63,56 @@ body {
 
 .loading-screen.hide {
     opacity: 0;
+
     visibility: hidden;
+
     pointer-events: none;
 }
 
+
+
+
 .loading {
-    font-size: clamp(22px, 6vw, 75px);
+    font-size:
+        clamp(22px, 6vw, 75px);
+
     font-weight: 900;
+
     letter-spacing: 0.12em;
+
     user-select: none;
 
     animation:
-        loadingPulse 0.25s infinite alternate,
-        loadingShake 0.4s infinite;
+        loadingPulse
+        0.25s
+        infinite
+        alternate,
+
+        loadingShake
+        0.4s
+        infinite;
 }
 
 .dots {
     display: inline-block;
+
     width: 3ch;
+
     text-align: left;
 }
+
+
+
 
 .number {
     margin-top: 30px;
 
-    font-size: clamp(
-        50px,
-        13vw,
-        150px
-    );
+    font-size:
+        clamp(
+            50px,
+            13vw,
+            150px
+        );
 
     font-weight: 900;
 
@@ -93,13 +129,19 @@ body {
         0 0 45px currentColor;
 
     animation:
-        numberPulse 0.05s infinite alternate;
+        numberPulse
+        0.05s
+        infinite
+        alternate;
 }
+
+
 
 .rate {
     margin-top: 15px;
 
     font-size: 13px;
+
     letter-spacing: 0.3em;
 
     opacity: 0.55;
@@ -109,8 +151,10 @@ body {
 
 
 
+
 .scanlines {
     position: fixed;
+
     inset: 0;
 
     pointer-events: none;
@@ -138,6 +182,7 @@ body {
     left: 0;
 
     width: 100%;
+
     height: 2px;
 
     background: currentColor;
@@ -151,6 +196,7 @@ body {
 
 
 
+
 .progress {
     position: fixed;
 
@@ -158,6 +204,7 @@ body {
     bottom: 0;
 
     width: 100%;
+
     height: 5px;
 
     background: currentColor;
@@ -165,7 +212,10 @@ body {
     transform-origin: left;
 
     animation:
-        progress 0.6s linear infinite;
+        progress
+        0.6s
+        linear
+        infinite;
 
     z-index: 10002;
 }
@@ -176,13 +226,14 @@ body {
     min-height: 100vh;
 
     background: #000;
-    color: #fff;
 
-    padding: 25px;
+    padding:
+        0 25px 40px;
 
     opacity: 0;
 
-    transform: translateY(20px);
+    transform:
+        translateY(20px);
 
     transition:
         opacity 1s ease,
@@ -191,42 +242,97 @@ body {
 
 .gallery-page.show {
     opacity: 1;
-    transform: translateY(0);
+
+    transform:
+        translateY(0);
 }
+
 
 
 
 .gallery-header {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
-    padding: 15px 5px 25px;
-
-    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding:
+        20px 5px;
 
     margin-bottom: 25px;
+
+    background:
+        rgba(0,0,0,0.92);
+
+    backdrop-filter:
+        blur(10px);
+
+    -webkit-backdrop-filter:
+        blur(10px);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.2);
+
+    transition:
+        transform 0.35s ease,
+        opacity 0.35s ease;
 }
 
+
+
+
+.gallery-header.header-hidden {
+
+    transform:
+        translateY(-100%);
+
+    opacity: 0;
+}
+
+
+
 .gallery-title {
-    font-size: clamp(20px, 4vw, 42px);
+
+    font-size:
+        clamp(
+            20px,
+            4vw,
+            42px
+        );
 
     font-weight: 900;
 
-    letter-spacing: 0.15em;
+    letter-spacing:
+        0.15em;
 }
 
+
+
+
 .gallery-count {
+
     font-size: 11px;
 
-    letter-spacing: 0.25em;
+    letter-spacing:
+        0.25em;
 
     opacity: 0.5;
 }
 
 
 
+
 .gallery {
+
     width: 100%;
 
     display: grid;
@@ -238,7 +344,9 @@ body {
 }
 
 
+
 .photo {
+
     position: relative;
 
     width: 100%;
@@ -253,48 +361,69 @@ body {
 
     opacity: 0;
 
-    transform: translateY(20px);
+    transform:
+        translateY(20px);
 
     animation:
-        photoAppear 0.7s ease forwards;
+        photoAppear
+        0.7s
+        ease
+        forwards;
 }
 
+
+
+
 .photo img {
+
     width: 100%;
+
     height: 100%;
 
     display: block;
 
     object-fit: cover;
 
-    filter: grayscale(100%);
+    filter:
+        grayscale(100%);
 
     transition:
         transform 0.5s ease,
         filter 0.5s ease;
 }
 
-.photo:hover img {
-    transform: scale(1.06);
 
-    filter: grayscale(0%);
+
+.photo:hover img {
+
+    transform:
+        scale(1.06);
+
+    filter:
+        grayscale(0%);
 }
 
 
 
+
 .photo-number {
+
     position: absolute;
 
     left: 10px;
+
     bottom: 10px;
 
-    padding: 5px 8px;
+    padding:
+        5px 8px;
 
     font-size: 10px;
 
-    letter-spacing: 0.15em;
+    letter-spacing:
+        0.15em;
 
-    background: rgba(0,0,0,0.7);
+    background:
+        rgba(0,0,0,0.7);
 
     color: #fff;
 
@@ -303,34 +432,46 @@ body {
 
 
 
+
 .photo::after {
+
     content: "";
 
     position: absolute;
 
     inset: 0;
 
-    border: 1px solid transparent;
+    border:
+        1px solid
+        transparent;
 
     transition:
         border 0.3s ease;
 }
 
 .photo:hover::after {
-    border: 1px solid rgba(255,255,255,0.8);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.8);
 }
 
 
+
+
 .viewer {
+
     position: fixed;
 
     inset: 0;
 
-    background: rgba(0,0,0,0.95);
+    background:
+        rgba(0,0,0,0.95);
 
     display: flex;
 
     justify-content: center;
+
     align-items: center;
 
     padding: 30px;
@@ -346,25 +487,37 @@ body {
 }
 
 .viewer.active {
+
     opacity: 1;
 
     visibility: visible;
 }
 
+
+
+
 .viewer img {
+
     max-width: 95vw;
+
     max-height: 90vh;
 
     object-fit: contain;
 
     box-shadow:
-        0 0 40px rgba(255,255,255,0.15);
+        0 0 40px
+        rgba(255,255,255,0.15);
 }
 
+
+
+
 .close {
+
     position: fixed;
 
     top: 20px;
+
     right: 25px;
 
     font-size: 35px;
@@ -379,75 +532,98 @@ body {
 }
 
 
+
+
 @keyframes loadingPulse {
 
     from {
-        transform: scale(1);
-        opacity: 0.55;
+        transform:
+            scale(1);
+
+        opacity:
+            0.55;
     }
 
     to {
-        transform: scale(1.08);
-        opacity: 1;
+        transform:
+            scale(1.08);
+
+        opacity:
+            1;
     }
 
 }
+
 
 @keyframes loadingShake {
 
     0% {
-        transform: translateX(0);
+        transform:
+            translateX(0);
     }
 
     25% {
-        transform: translateX(-2px);
+        transform:
+            translateX(-2px);
     }
 
     50% {
-        transform: translateX(2px);
+        transform:
+            translateX(2px);
     }
 
     75% {
-        transform: translateX(-1px);
+        transform:
+            translateX(-1px);
     }
 
     100% {
-        transform: translateX(1px);
+        transform:
+            translateX(1px);
     }
 
 }
+
 
 @keyframes numberPulse {
 
     from {
-        transform: scale(1);
+        transform:
+            scale(1);
     }
 
     to {
-        transform: scale(1.025);
+        transform:
+            scale(1.025);
     }
 
 }
+
 
 @keyframes progress {
 
     from {
-        transform: scaleX(0);
+        transform:
+            scaleX(0);
     }
 
     to {
-        transform: scaleX(1);
+        transform:
+            scaleX(1);
     }
 
 }
 
+
 @keyframes photoAppear {
 
     to {
+
         opacity: 1;
 
         transform:
             translateY(0);
+
     }
 
 }
@@ -457,77 +633,128 @@ body {
 @media (max-width: 900px) {
 
     .gallery {
+
         grid-template-columns:
             repeat(3, 1fr);
+
     }
 
 }
+
+
+
 
 @media (max-width: 600px) {
 
     .gallery-page {
-        padding: 12px;
+
+        padding:
+            0 10px 30px;
+
     }
 
+
     .gallery {
+
         grid-template-columns:
             repeat(2, 1fr);
 
         gap: 6px;
+
     }
+
 
     .gallery-header {
+
         padding:
-            10px 3px 18px;
+            15px 3px;
+
+        margin-bottom:
+            15px;
+
     }
+
 
     .gallery-title {
-        font-size: 20px;
+
+        font-size:
+            20px;
+
     }
+
 
     .gallery-count {
-        font-size: 8px;
+
+        font-size:
+            8px;
+
     }
+
 
     .loading {
-        font-size: 23px;
+
+        font-size:
+            23px;
+
     }
+
 
     .number {
-        font-size: 58px;
+
+        font-size:
+            58px;
+
     }
 
+
     .rate {
-        font-size: 9px;
+
+        font-size:
+            9px;
+
     }
 
 }
+
 
 
 
 @media (max-width: 350px) {
 
     .gallery {
+
         grid-template-columns:
             1fr;
+
     }
 
 }
+
 </style>
 </head>
+
 
 <body>
 
 
-<div class="loading-screen" id="loadingScreen">
+
+
+<div
+    class="loading-screen"
+    id="loadingScreen"
+>
 
     <div class="loading">
+
         LOADING
+
         <span
             class="dots"
             id="dots"
         >.</span>
+
     </div>
+
 
     <div
         class="number"
@@ -536,10 +763,15 @@ body {
         0
     </div>
 
+
     <div class="rate">
+
         Suraj Maharjan
+
         <br>
+
         VESUN INTERIOR
+
     </div>
 
 </div>
@@ -558,31 +790,45 @@ body {
 
 
 
-
 <main
     class="gallery-page"
     id="galleryPage"
 >
 
-    <header class="gallery-header">
+
+    <!-- HEADER -->
+
+    <header
+        class="gallery-header"
+        id="galleryHeader"
+    >
 
         <div class="gallery-title">
+
             SITE PHOTOS
+
         </div>
 
+
         <div class="gallery-count">
+
             84 IMAGES
+
         </div>
 
     </header>
 
+
+    <!-- IMAGE GRID -->
 
     <section
         class="gallery"
         id="gallery"
     ></section>
 
+
 </main>
+
 
 
 
@@ -598,6 +844,7 @@ body {
         ×
     </div>
 
+
     <img
         id="viewerImage"
         src=""
@@ -610,12 +857,15 @@ body {
 <script>
 
 
+
+
 const numberElement =
-    document.getElementById("number");
+    document.getElementById(
+        "number"
+    );
 
 let number = 0;
 
-const interval = 10;
 
 const counter =
     setInterval(() => {
@@ -625,33 +875,39 @@ const counter =
         numberElement.textContent =
             number.toLocaleString();
 
-        /*
-        Stop at 100
-        */
 
         if (number >= 100) {
 
-            clearInterval(counter);
+            clearInterval(
+                counter
+            );
 
         }
 
-    }, interval);
+    }, 10);
 
 
 
 
 const dots =
-    document.getElementById("dots");
+    document.getElementById(
+        "dots"
+    );
 
 let dotCount = 0;
+
 
 setInterval(() => {
 
     dotCount++;
 
+
     if (dotCount > 3) {
+
         dotCount = 0;
+
     }
+
 
     dots.textContent =
         ".".repeat(dotCount);
@@ -660,20 +916,29 @@ setInterval(() => {
 
 
 
+
 const loadingScreen =
-    document.getElementById("loadingScreen");
+    document.getElementById(
+        "loadingScreen"
+    );
 
 let pulse = 0;
+
 
 function visualEffect() {
 
     pulse += 0.12;
 
+
     const wave =
         (Math.sin(pulse) + 1) / 2;
 
+
     const brightness =
-        Math.round(wave * 255);
+        Math.round(
+            wave * 255
+        );
+
 
     loadingScreen.style.background =
         `rgb(
@@ -682,6 +947,7 @@ function visualEffect() {
             ${brightness}
         )`;
 
+
     loadingScreen.style.color =
         brightness > 135
             ? "#000"
@@ -689,10 +955,16 @@ function visualEffect() {
 
 
     const shake =
-        Math.sin(pulse * 3) * 2;
+        Math.sin(
+            pulse * 3
+        ) * 2;
+
 
     const vertical =
-        Math.cos(pulse * 2) * 1.5;
+        Math.cos(
+            pulse * 2
+        ) * 1.5;
+
 
     loadingScreen.style.transform =
         `translate(
@@ -704,11 +976,16 @@ function visualEffect() {
     const contrast =
         100 +
         Math.abs(
-            Math.sin(pulse * 2)
+            Math.sin(
+                pulse * 2
+            )
         ) * 70;
 
+
     loadingScreen.style.filter =
-        `contrast(${contrast}%)`;
+        `contrast(
+            ${contrast}%
+        )`;
 
 
     requestAnimationFrame(
@@ -717,35 +994,45 @@ function visualEffect() {
 
 }
 
+
 visualEffect();
 
 
 
 
 const glitch =
-    document.getElementById("glitch");
+    document.getElementById(
+        "glitch"
+    );
+
 
 setInterval(() => {
 
     const position =
         Math.random() * 100;
 
+
     const height =
         Math.random() * 8 + 1;
+
 
     glitch.style.top =
         position + "%";
 
+
     glitch.style.height =
         height + "px";
 
+
     glitch.style.opacity =
         Math.random() * 0.8;
+
 
     glitch.style.transform =
         `translateX(
             ${(Math.random() - 0.5) * 40}px
         )`;
+
 
     setTimeout(() => {
 
@@ -759,7 +1046,10 @@ setInterval(() => {
 
 
 const gallery =
-    document.getElementById("gallery");
+    document.getElementById(
+        "gallery"
+    );
+
 
 for (
     let i = 1;
@@ -768,13 +1058,14 @@ for (
 ) {
 
     const photo =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
-    photo.className = "photo";
 
-    /*
-    Stagger animation
-    */
+    photo.className =
+        "photo";
+
 
     photo.style.animationDelay =
         `${i * 0.025}s`;
@@ -783,20 +1074,23 @@ for (
     photo.innerHTML = `
 
         <img
-            src="img/${i}.jpg"
+            src="${i}.jpg"
             alt="Site Photo ${i}"
             loading="lazy"
         >
 
         <div class="photo-number">
+
             ${String(i).padStart(2, "0")}
+
         </div>
 
     `;
 
 
-    gallery.appendChild(photo);
-
+    gallery.appendChild(
+        photo
+    );
 
 
 
@@ -805,10 +1099,14 @@ for (
         () => {
 
             const image =
-                photo.querySelector("img");
+                photo.querySelector(
+                    "img"
+                );
+
 
             viewerImage.src =
                 image.src;
+
 
             viewer.classList.add(
                 "active"
@@ -821,16 +1119,25 @@ for (
 
 
 
-
 const viewer =
-    document.getElementById("viewer");
+    document.getElementById(
+        "viewer"
+    );
+
 
 const viewerImage =
-    document.getElementById("viewerImage");
+    document.getElementById(
+        "viewerImage"
+    );
+
 
 const close =
-    document.getElementById("close");
+    document.getElementById(
+        "close"
+    );
 
+
+/* CLOSE BUTTON */
 
 close.addEventListener(
     "click",
@@ -846,9 +1153,7 @@ close.addEventListener(
 );
 
 
-/*
-Click outside image to close
-*/
+/* CLICK OUTSIDE */
 
 viewer.addEventListener(
     "click",
@@ -870,9 +1175,7 @@ viewer.addEventListener(
 );
 
 
-/*
-ESC key closes viewer
-*/
+/* ESC */
 
 document.addEventListener(
     "keydown",
@@ -895,11 +1198,80 @@ document.addEventListener(
 
 
 
-/*
-After 1.2 seconds,
-hide loading screen
-and show gallery.
-*/
+const header =
+    document.getElementById(
+        "galleryHeader"
+    );
+
+
+let lastScrollY =
+    window.scrollY;
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        const currentScrollY =
+            window.scrollY;
+
+
+
+
+        if (
+            currentScrollY <= 20
+        ) {
+
+            header.classList.remove(
+                "header-hidden"
+            );
+
+            lastScrollY =
+                currentScrollY;
+
+            return;
+
+        }
+
+
+        if (
+            currentScrollY >
+            lastScrollY
+        ) {
+
+            header.classList.add(
+                "header-hidden"
+            );
+
+        }
+
+
+
+        else if (
+            currentScrollY <
+            lastScrollY
+        ) {
+
+            header.classList.remove(
+                "header-hidden"
+            );
+
+        }
+
+
+        lastScrollY =
+            currentScrollY;
+
+    },
+
+    {
+        passive: true
+    }
+
+);
+
+
+
 
 setTimeout(() => {
 
@@ -907,11 +1279,17 @@ setTimeout(() => {
         "hide"
     );
 
+
     document
-        .getElementById("galleryPage")
-        .classList.add("show");
+        .getElementById(
+            "galleryPage"
+        )
+        .classList.add(
+            "show"
+        );
 
 }, 1200);
+
 
 </script>
 
