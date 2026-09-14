@@ -8,8 +8,6 @@
 
 <style>
 
-
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -20,28 +18,24 @@ html,
 body {
     width: 100%;
     min-height: 100%;
-
     background: #000;
     color: #fff;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
+/* =====================================
+   LOADING SCREEN
+===================================== */
 
 .loading-screen {
     position: fixed;
-
     inset: 0;
 
     width: 100vw;
     height: 100vh;
 
     display: flex;
-
     flex-direction: column;
 
     justify-content: center;
@@ -63,18 +57,17 @@ body {
 
 .loading-screen.hide {
     opacity: 0;
-
     visibility: hidden;
-
     pointer-events: none;
 }
 
 
-
+/* =====================================
+   LOADING TEXT
+===================================== */
 
 .loading {
-    font-size:
-        clamp(22px, 6vw, 75px);
+    font-size: clamp(22px, 6vw, 75px);
 
     font-weight: 900;
 
@@ -83,26 +76,20 @@ body {
     user-select: none;
 
     animation:
-        loadingPulse
-        0.25s
-        infinite
-        alternate,
-
-        loadingShake
-        0.4s
-        infinite;
+        loadingPulse 0.25s infinite alternate,
+        loadingShake 0.4s infinite;
 }
 
 .dots {
     display: inline-block;
-
     width: 3ch;
-
     text-align: left;
 }
 
 
-
+/* =====================================
+   COUNTER
+===================================== */
 
 .number {
     margin-top: 30px;
@@ -116,8 +103,7 @@ body {
 
     font-weight: 900;
 
-    font-variant-numeric:
-        tabular-nums;
+    font-variant-numeric: tabular-nums;
 
     letter-spacing: 0.03em;
 
@@ -129,13 +115,13 @@ body {
         0 0 45px currentColor;
 
     animation:
-        numberPulse
-        0.05s
-        infinite
-        alternate;
+        numberPulse 0.05s infinite alternate;
 }
 
 
+/* =====================================
+   NAME
+===================================== */
 
 .rate {
     margin-top: 15px;
@@ -150,7 +136,9 @@ body {
 }
 
 
-
+/* =====================================
+   SCANLINES
+===================================== */
 
 .scanlines {
     position: fixed;
@@ -175,6 +163,9 @@ body {
 }
 
 
+/* =====================================
+   GLITCH
+===================================== */
 
 .glitch {
     position: fixed;
@@ -195,7 +186,9 @@ body {
 }
 
 
-
+/* =====================================
+   PROGRESS BAR
+===================================== */
 
 .progress {
     position: fixed;
@@ -212,15 +205,15 @@ body {
     transform-origin: left;
 
     animation:
-        progress
-        0.6s
-        linear
-        infinite;
+        progress 0.6s linear infinite;
 
     z-index: 10002;
 }
 
 
+/* =====================================
+   GALLERY
+===================================== */
 
 .gallery-page {
     min-height: 100vh;
@@ -248,7 +241,9 @@ body {
 }
 
 
-
+/* =====================================
+   SMART HEADER
+===================================== */
 
 .gallery-header {
 
@@ -288,7 +283,7 @@ body {
 }
 
 
-
+/* Hide when scrolling down */
 
 .gallery-header.header-hidden {
 
@@ -299,6 +294,9 @@ body {
 }
 
 
+/* =====================================
+   HEADER TITLE
+===================================== */
 
 .gallery-title {
 
@@ -316,7 +314,9 @@ body {
 }
 
 
-
+/* =====================================
+   HEADER COUNT
+===================================== */
 
 .gallery-count {
 
@@ -329,7 +329,9 @@ body {
 }
 
 
-
+/* =====================================
+   IMAGE GRID
+===================================== */
 
 .gallery {
 
@@ -344,6 +346,9 @@ body {
 }
 
 
+/* =====================================
+   PHOTO
+===================================== */
 
 .photo {
 
@@ -372,7 +377,9 @@ body {
 }
 
 
-
+/* =====================================
+   IMAGE
+===================================== */
 
 .photo img {
 
@@ -393,6 +400,9 @@ body {
 }
 
 
+/* =====================================
+   IMAGE HOVER
+===================================== */
 
 .photo:hover img {
 
@@ -404,7 +414,9 @@ body {
 }
 
 
-
+/* =====================================
+   PHOTO NUMBER
+===================================== */
 
 .photo-number {
 
@@ -431,7 +443,9 @@ body {
 }
 
 
-
+/* =====================================
+   PHOTO BORDER
+===================================== */
 
 .photo::after {
 
@@ -457,7 +471,9 @@ body {
 }
 
 
-
+/* =====================================
+   FULLSCREEN VIEWER
+===================================== */
 
 .viewer {
 
@@ -494,7 +510,9 @@ body {
 }
 
 
-
+/* =====================================
+   FULLSCREEN IMAGE
+===================================== */
 
 .viewer img {
 
@@ -510,7 +528,9 @@ body {
 }
 
 
-
+/* =====================================
+   CLOSE BUTTON
+===================================== */
 
 .close {
 
@@ -532,24 +552,20 @@ body {
 }
 
 
-
+/* =====================================
+   ANIMATIONS
+===================================== */
 
 @keyframes loadingPulse {
 
     from {
-        transform:
-            scale(1);
-
-        opacity:
-            0.55;
+        transform: scale(1);
+        opacity: 0.55;
     }
 
     to {
-        transform:
-            scale(1.08);
-
-        opacity:
-            1;
+        transform: scale(1.08);
+        opacity: 1;
     }
 
 }
@@ -558,28 +574,23 @@ body {
 @keyframes loadingShake {
 
     0% {
-        transform:
-            translateX(0);
+        transform: translateX(0);
     }
 
     25% {
-        transform:
-            translateX(-2px);
+        transform: translateX(-2px);
     }
 
     50% {
-        transform:
-            translateX(2px);
+        transform: translateX(2px);
     }
 
     75% {
-        transform:
-            translateX(-1px);
+        transform: translateX(-1px);
     }
 
     100% {
-        transform:
-            translateX(1px);
+        transform: translateX(1px);
     }
 
 }
@@ -588,13 +599,11 @@ body {
 @keyframes numberPulse {
 
     from {
-        transform:
-            scale(1);
+        transform: scale(1);
     }
 
     to {
-        transform:
-            scale(1.025);
+        transform: scale(1.025);
     }
 
 }
@@ -603,13 +612,11 @@ body {
 @keyframes progress {
 
     from {
-        transform:
-            scaleX(0);
+        transform: scaleX(0);
     }
 
     to {
-        transform:
-            scaleX(1);
+        transform: scaleX(1);
     }
 
 }
@@ -618,17 +625,18 @@ body {
 @keyframes photoAppear {
 
     to {
-
         opacity: 1;
 
         transform:
             translateY(0);
-
     }
 
 }
 
 
+/* =====================================
+   TABLET
+===================================== */
 
 @media (max-width: 900px) {
 
@@ -642,7 +650,9 @@ body {
 }
 
 
-
+/* =====================================
+   MOBILE
+===================================== */
 
 @media (max-width: 600px) {
 
@@ -717,7 +727,9 @@ body {
 }
 
 
-
+/* =====================================
+   VERY SMALL MOBILE
+===================================== */
 
 @media (max-width: 350px) {
 
@@ -737,7 +749,9 @@ body {
 <body>
 
 
-
+<!-- =====================================
+     LOADING SCREEN
+===================================== -->
 
 <div
     class="loading-screen"
@@ -777,7 +791,9 @@ body {
 </div>
 
 
-
+<!-- =====================================
+     EFFECTS
+===================================== -->
 
 <div class="scanlines"></div>
 
@@ -789,6 +805,9 @@ body {
 <div class="progress"></div>
 
 
+<!-- =====================================
+     GALLERY
+===================================== -->
 
 <main
     class="gallery-page"
@@ -812,7 +831,7 @@ body {
 
         <div class="gallery-count">
 
-            Old and New Mixed 
+            Old and New Mixed
 
         </div>
 
@@ -830,7 +849,9 @@ body {
 </main>
 
 
-
+<!-- =====================================
+     FULLSCREEN VIEWER
+===================================== -->
 
 <div
     class="viewer"
@@ -848,7 +869,7 @@ body {
     <img
         id="viewerImage"
         src=""
-        alt="Site photo"
+        alt="Photo"
     >
 
 </div>
@@ -857,12 +878,12 @@ body {
 <script>
 
 
-
+/* =====================================
+   LOADING COUNTER
+===================================== */
 
 const numberElement =
-    document.getElementById(
-        "number"
-    );
+    document.getElementById("number");
 
 let number = 0;
 
@@ -878,21 +899,19 @@ const counter =
 
         if (number >= 100) {
 
-            clearInterval(
-                counter
-            );
+            clearInterval(counter);
 
         }
 
     }, 10);
 
 
-
+/* =====================================
+   LOADING DOTS
+===================================== */
 
 const dots =
-    document.getElementById(
-        "dots"
-    );
+    document.getElementById("dots");
 
 let dotCount = 0;
 
@@ -915,7 +934,9 @@ setInterval(() => {
 }, 180);
 
 
-
+/* =====================================
+   LOADING VISUAL EFFECT
+===================================== */
 
 const loadingScreen =
     document.getElementById(
@@ -983,9 +1004,7 @@ function visualEffect() {
 
 
     loadingScreen.style.filter =
-        `contrast(
-            ${contrast}%
-        )`;
+        `contrast(${contrast}%)`;
 
 
     requestAnimationFrame(
@@ -998,7 +1017,9 @@ function visualEffect() {
 visualEffect();
 
 
-
+/* =====================================
+   RANDOM GLITCH BARS
+===================================== */
 
 const glitch =
     document.getElementById(
@@ -1043,12 +1064,21 @@ setInterval(() => {
 }, 120);
 
 
-
+/* =====================================
+   CREATE RANDOM IMAGE ORDER
+===================================== */
 
 const gallery =
     document.getElementById(
         "gallery"
     );
+
+
+/*
+Create numbers 1 to 84
+*/
+
+let imageNumbers = [];
 
 
 for (
@@ -1057,67 +1087,48 @@ for (
     i++
 ) {
 
-    const photo =
-        document.createElement(
-            "div"
-        );
-
-
-    photo.className =
-        "photo";
-
-
-    photo.style.animationDelay =
-        `${i * 0.025}s`;
-
-
-    photo.innerHTML = `
-
-        <img
-            src="${i}.jpg"
-            alt="Site Photo ${i}"
-            loading="lazy"
-        >
-
-        <div class="photo-number">
-
-            ${String(i).padStart(2, "0")}
-
-        </div>
-
-    `;
-
-
-    gallery.appendChild(
-        photo
-    );
-
-
-
-    photo.addEventListener(
-        "click",
-        () => {
-
-            const image =
-                photo.querySelector(
-                    "img"
-                );
-
-
-            viewerImage.src =
-                image.src;
-
-
-            viewer.classList.add(
-                "active"
-            );
-
-        }
-    );
+    imageNumbers.push(i);
 
 }
 
 
+/*
+Fisher-Yates shuffle
+
+This creates a new random
+order every time the page
+is refreshed.
+*/
+
+for (
+    let i = imageNumbers.length - 1;
+    i > 0;
+    i--
+) {
+
+    const randomIndex =
+        Math.floor(
+            Math.random() * (i + 1)
+        );
+
+
+    [
+        imageNumbers[i],
+        imageNumbers[randomIndex]
+
+    ] = [
+
+        imageNumbers[randomIndex],
+        imageNumbers[i]
+
+    ];
+
+}
+
+
+/* =====================================
+   CREATE PHOTOS
+===================================== */
 
 const viewer =
     document.getElementById(
@@ -1131,13 +1142,87 @@ const viewerImage =
     );
 
 
+imageNumbers.forEach(
+    (imageNumber, index) => {
+
+        const photo =
+            document.createElement(
+                "div"
+            );
+
+
+        photo.className =
+            "photo";
+
+
+        /*
+        Stagger the entrance
+        */
+
+        photo.style.animationDelay =
+            `${index * 0.025}s`;
+
+
+        photo.innerHTML = `
+
+            <img
+                src="${imageNumber}.jpg"
+                alt="Photo ${imageNumber}"
+                loading="lazy"
+            >
+
+            <div class="photo-number">
+
+                ${String(imageNumber).padStart(2, "0")}
+
+            </div>
+
+        `;
+
+
+        gallery.appendChild(
+            photo
+        );
+
+
+        /* ================================
+           OPEN FULLSCREEN
+        ================================= */
+
+        photo.addEventListener(
+            "click",
+            () => {
+
+                const image =
+                    photo.querySelector(
+                        "img"
+                    );
+
+
+                viewerImage.src =
+                    image.src;
+
+
+                viewer.classList.add(
+                    "active"
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =====================================
+   CLOSE VIEWER
+===================================== */
+
 const close =
     document.getElementById(
         "close"
     );
 
-
-/* CLOSE BUTTON */
 
 close.addEventListener(
     "click",
@@ -1153,7 +1238,9 @@ close.addEventListener(
 );
 
 
-/* CLICK OUTSIDE */
+/* =====================================
+   CLICK OUTSIDE IMAGE
+===================================== */
 
 viewer.addEventListener(
     "click",
@@ -1175,7 +1262,9 @@ viewer.addEventListener(
 );
 
 
-/* ESC */
+/* =====================================
+   ESC KEY
+===================================== */
 
 document.addEventListener(
     "keydown",
@@ -1197,6 +1286,9 @@ document.addEventListener(
 );
 
 
+/* =====================================
+   SMART HEADER
+===================================== */
 
 const header =
     document.getElementById(
@@ -1216,7 +1308,9 @@ window.addEventListener(
             window.scrollY;
 
 
-
+        /* =============================
+           AT TOP
+        ============================= */
 
         if (
             currentScrollY <= 20
@@ -1234,6 +1328,10 @@ window.addEventListener(
         }
 
 
+        /* =============================
+           SCROLL DOWN
+        ============================= */
+
         if (
             currentScrollY >
             lastScrollY
@@ -1246,6 +1344,9 @@ window.addEventListener(
         }
 
 
+        /* =============================
+           SCROLL UP
+        ============================= */
 
         else if (
             currentScrollY <
@@ -1271,7 +1372,9 @@ window.addEventListener(
 );
 
 
-
+/* =====================================
+   SHOW GALLERY
+===================================== */
 
 setTimeout(() => {
 
@@ -1289,7 +1392,6 @@ setTimeout(() => {
         );
 
 }, 1200);
-
 
 </script>
 
