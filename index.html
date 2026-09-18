@@ -1166,16 +1166,10 @@ imageNumbers.forEach(
         photo.innerHTML = `
 
             <img
-                src="${imageNumber}.jpg"
+                 src="images/${imageNumber}.jpg"
                 alt="Photo ${imageNumber}"
                 loading="lazy"
             >
-
-            <div class="photo-number">
-
-                ${String(imageNumber).padStart(2, "0")}
-
-            </div>
 
         `;
 
