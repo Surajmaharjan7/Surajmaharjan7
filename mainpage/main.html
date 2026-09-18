@@ -1,0 +1,579 @@
+<main
+    class="gallery-page"
+    id="galleryPage"
+>
+
+
+    <!-- HEADER -->
+
+    <header
+        class="gallery-header"
+        id="galleryHeader"
+    >
+
+        <div class="gallery-title">
+
+            Gallery
+
+        </div>
+
+
+        <div class="gallery-count">
+
+            Mixed Images 
+
+        </div>
+
+    </header>
+
+
+    <!-- IMAGE GRID -->
+
+    <section
+        class="gallery"
+        id="gallery"
+    ></section>
+
+
+</main>
+
+
+<!-- =====================================
+     FULLSCREEN VIEWER
+===================================== -->
+
+<div
+    class="viewer"
+    id="viewer"
+>
+
+    <div
+        class="close"
+        id="close"
+    >
+        ×
+    </div>
+
+
+    <img
+        id="viewerImage"
+        src=""
+        alt="Photo"
+    >
+
+</div>
+
+
+<script>
+
+
+/* =====================================
+   LOADING COUNTER
+===================================== */
+
+const numberElement =
+    document.getElementById("number");
+
+let number = 0;
+
+
+const counter =
+    setInterval(() => {
+
+        number++;
+
+        numberElement.textContent =
+            number.toLocaleString();
+
+
+        if (number >= 100) {
+
+            clearInterval(counter);
+
+        }
+
+    }, 10);
+
+
+/* =====================================
+   LOADING DOTS
+===================================== */
+
+const dots =
+    document.getElementById("dots");
+
+let dotCount = 0;
+
+
+setInterval(() => {
+
+    dotCount++;
+
+
+    if (dotCount > 3) {
+
+        dotCount = 0;
+
+    }
+
+
+    dots.textContent =
+        ".".repeat(dotCount);
+
+}, 180);
+
+
+/* =====================================
+   LOADING VISUAL EFFECT
+===================================== */
+
+const loadingScreen =
+    document.getElementById(
+        "loadingScreen"
+    );
+
+let pulse = 0;
+
+
+function visualEffect() {
+
+    pulse += 0.12;
+
+
+    const wave =
+        (Math.sin(pulse) + 1) / 2;
+
+
+    const brightness =
+        Math.round(
+            wave * 255
+        );
+
+
+    loadingScreen.style.background =
+        `rgb(
+            ${brightness},
+            ${brightness},
+            ${brightness}
+        )`;
+
+
+    loadingScreen.style.color =
+        brightness > 135
+            ? "#000"
+            : "#fff";
+
+
+    const shake =
+        Math.sin(
+            pulse * 3
+        ) * 2;
+
+
+    const vertical =
+        Math.cos(
+            pulse * 2
+        ) * 1.5;
+
+
+    loadingScreen.style.transform =
+        `translate(
+            ${shake}px,
+            ${vertical}px
+        )`;
+
+
+    const contrast =
+        100 +
+        Math.abs(
+            Math.sin(
+                pulse * 2
+            )
+        ) * 70;
+
+
+    loadingScreen.style.filter =
+        `contrast(${contrast}%)`;
+
+
+    requestAnimationFrame(
+        visualEffect
+    );
+
+}
+
+
+visualEffect();
+
+
+/* =====================================
+   RANDOM GLITCH BARS
+===================================== */
+
+const glitch =
+    document.getElementById(
+        "glitch"
+    );
+
+
+setInterval(() => {
+
+    const position =
+        Math.random() * 100;
+
+
+    const height =
+        Math.random() * 8 + 1;
+
+
+    glitch.style.top =
+        position + "%";
+
+
+    glitch.style.height =
+        height + "px";
+
+
+    glitch.style.opacity =
+        Math.random() * 0.8;
+
+
+    glitch.style.transform =
+        `translateX(
+            ${(Math.random() - 0.5) * 40}px
+        )`;
+
+
+    setTimeout(() => {
+
+        glitch.style.opacity = 0;
+
+    }, 40);
+
+}, 120);
+
+
+/* =====================================
+   CREATE RANDOM IMAGE ORDER
+===================================== */
+
+const gallery =
+    document.getElementById(
+        "gallery"
+    );
+
+
+/*
+Create numbers 1 to 84
+*/
+
+let imageNumbers = [];
+
+
+for (
+    let i = 1;
+    i <= 66;
+    i++
+) {
+
+    imageNumbers.push(i);
+
+}
+
+
+/*
+Fisher-Yates shuffle
+
+This creates a new random
+order every time the page
+is refreshed.
+*/
+
+for (
+    let i = imageNumbers.length - 1;
+    i > 0;
+    i--
+) {
+
+    const randomIndex =
+        Math.floor(
+            Math.random() * (i + 1)
+        );
+
+
+    [
+        imageNumbers[i],
+        imageNumbers[randomIndex]
+
+    ] = [
+
+        imageNumbers[randomIndex],
+        imageNumbers[i]
+
+    ];
+
+}
+
+
+/* =====================================
+   CREATE PHOTOS
+===================================== */
+
+const viewer =
+    document.getElementById(
+        "viewer"
+    );
+
+
+const viewerImage =
+    document.getElementById(
+        "viewerImage"
+    );
+
+
+imageNumbers.forEach(
+    (imageNumber, index) => {
+
+        const photo =
+            document.createElement(
+                "div"
+            );
+
+
+        photo.className =
+            "photo";
+
+
+        /*
+        Stagger the entrance
+        */
+
+        photo.style.animationDelay =
+            `${index * 0.025}s`;
+
+
+        photo.innerHTML = `
+
+            <img
+                 src="images/${imageNumber}.jpg"
+                alt="Photo ${imageNumber}"
+                loading="lazy"
+            >
+
+        `;
+
+
+        gallery.appendChild(
+            photo
+        );
+
+
+        /* ================================
+           OPEN FULLSCREEN
+        ================================= */
+
+        photo.addEventListener(
+            "click",
+            () => {
+
+                const image =
+                    photo.querySelector(
+                        "img"
+                    );
+
+
+                viewerImage.src =
+                    image.src;
+
+
+                viewer.classList.add(
+                    "active"
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =====================================
+   CLOSE VIEWER
+===================================== */
+
+const close =
+    document.getElementById(
+        "close"
+    );
+
+
+close.addEventListener(
+    "click",
+    () => {
+
+        viewer.classList.remove(
+            "active"
+        );
+
+        viewerImage.src = "";
+
+    }
+);
+
+
+/* =====================================
+   CLICK OUTSIDE IMAGE
+===================================== */
+
+viewer.addEventListener(
+    "click",
+    (event) => {
+
+        if (
+            event.target === viewer
+        ) {
+
+            viewer.classList.remove(
+                "active"
+            );
+
+            viewerImage.src = "";
+
+        }
+
+    }
+);
+
+
+/* =====================================
+   ESC KEY
+===================================== */
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            viewer.classList.remove(
+                "active"
+            );
+
+            viewerImage.src = "";
+
+        }
+
+    }
+);
+
+
+/* =====================================
+   SMART HEADER
+===================================== */
+
+const header =
+    document.getElementById(
+        "galleryHeader"
+    );
+
+
+let lastScrollY =
+    window.scrollY;
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        const currentScrollY =
+            window.scrollY;
+
+
+        /* =============================
+           AT TOP
+        ============================= */
+
+        if (
+            currentScrollY <= 20
+        ) {
+
+            header.classList.remove(
+                "header-hidden"
+            );
+
+            lastScrollY =
+                currentScrollY;
+
+            return;
+
+        }
+
+
+        /* =============================
+           SCROLL DOWN
+        ============================= */
+
+        if (
+            currentScrollY >
+            lastScrollY
+        ) {
+
+            header.classList.add(
+                "header-hidden"
+            );
+
+        }
+
+
+        /* =============================
+           SCROLL UP
+        ============================= */
+
+        else if (
+            currentScrollY <
+            lastScrollY
+        ) {
+
+            header.classList.remove(
+                "header-hidden"
+            );
+
+        }
+
+
+        lastScrollY =
+            currentScrollY;
+
+    },
+
+    {
+        passive: true
+    }
+
+);
+
+
+/* =====================================
+   SHOW GALLERY
+===================================== */
+
+setTimeout(() => {
+
+    loadingScreen.classList.add(
+        "hide"
+    );
+
+
+    document
+        .getElementById(
+            "galleryPage"
+        )
+        .classList.add(
+            "show"
+        );
+
+}, 1200);
+
+</script>
